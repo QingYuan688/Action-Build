@@ -296,7 +296,6 @@ jobs:
                 #sed -i 's/CONFIG_ZSMALLOC=m/CONFIG_ZSMALLOC=y/g' "$CONFIG_FILE"
                 #echo "CONFIG_ZSMALLOC=y" >> "$CONFIG_FILE"
               #sed -i 's/CONFIG_ZRAM=m/CONFIG_ZRAM=y/g' "$CONFIG_FILE"
-            fi
 
             if [ "${{ github.event.inputs.KERNEL_VERSION }}" = "6.6" ]; then
               echo "CONFIG_ZSMALLOC=y" >> "$CONFIG_FILE"
