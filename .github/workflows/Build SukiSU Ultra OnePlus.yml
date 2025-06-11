@@ -397,11 +397,6 @@ jobs:
            echo "CONFIG_TCP_CONG_WESTWOOD=n" >> "$CONFIG_FILE"
            echo "CONFIG_TCP_CONG_HTCP=n" >> "$CONFIG_FILE"
            
-          # 系统优化配置
-         echo "CONFIG_UFS_DATA_LOG=n" >> "$CONFIG_FILE"
-         echo "CONFIG_UFS_BOOT_LOG=n" >> "$CONFIG_FILE"
-         echo "CONFIG_SERIAL_MSM_HS=y" >> "$CONFIG_FILE"
-
           # LZ4KD配置*
           if [ "${{ github.event.inputs.ZRAM }}" = "true" ]; then
             if [ "${{ github.event.inputs.KERNEL_VERSION }}" = "5.10" ]; then
