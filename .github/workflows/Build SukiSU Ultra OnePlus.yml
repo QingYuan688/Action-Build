@@ -135,8 +135,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "Numbersf"
-          git config --global user.email "263623064@qq.com"
+          git config --global user.name "MuLuo"
+          git config --global user.email "1521111521@qq.com"
 
       - name: Show selected inputs debug
         run: |
