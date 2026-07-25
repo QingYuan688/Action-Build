@@ -6,7 +6,7 @@ on:
         type: choice
         description: "配置文件//Configuration file"
         required: true
-        default: oneplus_ace2_pro_b
+        default: oneplus_12_b
         options:
           - oneplus_nord_n30_se_5g_v
           - oneplus_10r_v
@@ -95,27 +95,27 @@ on:
         type: string
         description: "自定义构建时间(输入F使用UTCT或-1关闭)//Custom build time (Enter F to use UTCT, or -1 to disable)"
         required: false
-        default: "Fri Dec 12 11:37:03 UTC 2025"
+        default: "Fri Dec 12 18:58:58 UTC 2025"
       KSU_META:
         type: string
         description: "管理器分支名(必填)/内置分支名(必填)/自定义版本标识(留空不修改)/回退分支提交哈希版本(留空不修改)//Manager Branch name (Required) / Builtin branch name (Required) / Custom version identifier (Leave blank to not modify) / Rollback branch commit hash version (Leave blank to not modify)"
         required: false
-        default: "main/main/Numbersf/"
+        default: "main/main/MuLuo/"
       LZ4_UPDATE:
         type: boolean
         description: "是否升级LZ4到上游最新？//Upgrade LZ4 to the latest upstream?"
         required: true
-        default: false
+        default: true
       ZRAM:
         type: string
         description: "ZRAM(0关闭1开启)/算法名/大小//ZRAM (0: disable, 1: enable) / Algorithm name / Size"
         required: true
-        default: "0/lz4kd/8589934592"
+        default: "1/lz4kd/8589934592"
       SUFFIX:
         type: string
         description: "自定义内核后缀(不输入使用RAND_STR或-1关闭)//Custom kernel suffix (Leave blank to use RAND_STR, or -1 to disable)"
         required: false
-        default: ""
+        default: "MuLuo88888888"
       RESUBLEVEL:
         description: "自定义内核等级欺骗(SUBLEVEL)//Custom kernel SUBLEVEL spoofing"
         required: false
@@ -144,7 +144,7 @@ on:
         type: boolean
         description: "是否添加Unicode不可见字码点绕过读取漏洞修复？//Add patch for Unicode invisible code point read bypass vulnerability?"
         required: true
-        default: false
+        default: true
       SCHED_HMBIRD:
         type: boolean
         description: "是否添加风驰驱动1.0？//Add Fengchi (HMBIRD) Driver 1.0?"
@@ -159,7 +159,7 @@ on:
         type: boolean
         description: "是否添加Re-Kernel？//Add Re-Kernel?"
         required: true
-        default: false
+        default: true
       SUSFS_DEV:
         type: boolean
         description: "是否拉取SUSFS-DEV分支？//Pull the SUSFS-DEV branch?"
@@ -203,8 +203,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "Numbersf"
-          git config --global user.email "263623064@qq.com"
+          git config --global user.name "MuLuo"
+          git config --global user.email "1521111521@qq.com"
           mkdir kernel_workspace && cd kernel_workspace
           git clone https://github.com/Numbersf/Action-Build.git -b ReSukiSU
 
@@ -993,7 +993,7 @@ jobs:
             set_config "CONFIG_KSU_SUSFS_SUS_MOUNT=y"
             set_config "CONFIG_KSU_SUSFS_SUS_KSTAT=y"
             set_config "CONFIG_KSU_SUSFS_SPOOF_UNAME=y"
-            set_config "CONFIG_KSU_SUSFS_ENABLE_LOG=y"
+            set_config "CONFIG_KSU_SUSFS_ENABLE_LOG=n"
             set_config "CONFIG_KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS=y"
             set_config "CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG=y"
             set_config "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y"
@@ -1030,7 +1030,7 @@ jobs:
             set_config "CONFIG_CRYPTO_LZ4HC=y"
             set_config "CONFIG_CRYPTO_LZ4K=y"
             set_config "CONFIG_CRYPTO_LZ4KD=y"
-            set_config "CONFIG_CRYPTO_842=y"
+            set_config "CONFIG_CRYPTO_842=n"
             set_config "CONFIG_CRYPTO_LZ4K_OPLUS=y"
             set_config "CONFIG_ZRAM_WRITEBACK=y"
           fi
